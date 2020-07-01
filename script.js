@@ -1,12 +1,24 @@
 $(document).ready(function() {
 
+  // Gestione ricerca film al click del button
   $(document).on('click', 'button.search',
     function() {
       chiamataAjax();
     });
 
+    // Gestione ricerca film alla pressione del tasto enter
+    $(document).on('keypress', 'input.search-bar',
+    function() {
+      if (event.which == 13 || event.keyCode == 13) {
+        chiamataAjax();
+      };
+    });
 
 
+
+// *************FUNZIONI****************
+
+    // Creo una funzione per la chiamata Ajax dei film
     function chiamataAjax() {
       $.ajax(
         {
@@ -16,8 +28,8 @@ $(document).ready(function() {
             api_key: 'e99307154c6dfb0b4750f6603256716d',
             query: $('input.search-bar').val()
           },
-          success: function(dataResponse) {
-          var filmCorrispondenti = dataResponse.response;
+          success: function(dataResults) {
+          var filmCorrispondenti = dataResults.results;
           trovaFilm(filmCorrispondenti);
         },
         error: function() {

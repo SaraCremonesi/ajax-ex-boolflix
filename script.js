@@ -3,14 +3,18 @@ $(document).ready(function() {
   // Gestione ricerca film al click del button
   $(document).on('click', 'button.search',
     function() {
-      chiamataAjax();
+      searchFilm();
+      $('.container-film').html('');
+      $('input.search-bar').val('');
     });
 
     // Gestione ricerca film alla pressione del tasto enter
     $(document).on('keypress', 'input.search-bar',
     function() {
       if (event.which == 13 || event.keyCode == 13) {
-        chiamataAjax();
+        searchFilm();
+        $('.container-film').html('');
+        $('input.search-bar').val('');
       };
     });
 
@@ -19,7 +23,7 @@ $(document).ready(function() {
 // *************FUNZIONI****************
 
     // Creo una funzione per la chiamata Ajax dei film
-    function chiamataAjax() {
+    function searchFilm() {
       $.ajax(
         {
           url: 'https://api.themoviedb.org/3/search/movie',
@@ -30,23 +34,23 @@ $(document).ready(function() {
           },
           success: function(dataResults) {
           var filmCorrispondenti = dataResults.results;
-          trovaFilm(filmCorrispondenti);
+          printFilm(filmCorrispondenti);
         },
         error: function() {
-          alert('Errore');
+          alert('Inserisci il nome di un film per la ricerca');
         }
       }
     )};
 
     // Creo una funzione per stampare i film a schermo con Handlebars
-    function trovaFilm(filmDaTrovare) {
+    function printFilm(filmDaTrovare) {
       var source = $('#entry-template-film').html()
       var template = Handlebars.compile(source)
 
-      for (var i = 1; i <= filmDaTrovare.length; i++) {
+      for (var i = 0; i < filmDaTrovare.length; i++) {
         var film = filmDaTrovare[i];
         var html = template(film);
-        $('.container').append(html);
+        $('.container-film').append(html);
       }
     }
 });

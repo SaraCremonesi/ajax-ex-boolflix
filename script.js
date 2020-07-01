@@ -34,7 +34,24 @@ $(document).ready(function() {
           },
           success: function(dataResults) {
           var filmCorrispondenti = dataResults.results;
-          printFilm(filmCorrispondenti);
+
+          // Stampo i film con Handlebars
+          var source = $('#entry-template-film').html()
+          var template = Handlebars.compile(source)
+
+          for (var i = 0; i < filmCorrispondenti.length; i++) {
+            var film = filmCorrispondenti[i];
+
+            var context = {
+              "title": film.title,
+              "original_title": film.original_title,
+              "original_language": film.original_language,
+              "vote_average": film.vote_average
+            }
+            
+            var html = template(context);
+            $('.container-film').append(html);
+          }
         },
         error: function() {
           alert('Inserisci il nome di un film per la ricerca');
@@ -44,13 +61,6 @@ $(document).ready(function() {
 
     // Creo una funzione per stampare i film a schermo con Handlebars
     function printFilm(filmDaTrovare) {
-      var source = $('#entry-template-film').html()
-      var template = Handlebars.compile(source)
 
-      for (var i = 0; i < filmDaTrovare.length; i++) {
-        var film = filmDaTrovare[i];
-        var html = template(film);
-        $('.container-film').append(html);
-      }
     }
 });

@@ -4,6 +4,7 @@ $(document).ready(function() {
   $(document).on('click', 'button.search',
     function() {
       searchFilm();
+      searchTvSeries();
       $('.container-film').html('');
       $('input.search-bar').val('');
     });
@@ -13,6 +14,7 @@ $(document).ready(function() {
     function() {
       if (event.which == 13 || event.keyCode == 13) {
         searchFilm();
+        searchTvSeries();
         $('.container-film').html('');
         $('input.search-bar').val('');
       };
@@ -21,6 +23,59 @@ $(document).ready(function() {
 
 
 // *************FUNZIONI****************
+
+    // Creo una funzione per la chiamata Ajax delle serie tv
+    function searchTvSeries() {
+      $.ajax(
+        {
+          url: 'https://api.themoviedb.org/3/search/tv',
+          method: 'GET',
+          data: {
+            api_key: 'e99307154c6dfb0b4750f6603256716d',
+            query: $('input.search-bar').val()
+          },
+          success: function(dataResults) {
+          var serieTvCorrispondenti = dataResults.results;
+
+          // Stampo i film con Handlebars
+          var source = $('#entry-template-serietv').html()
+          var template = Handlebars.compile(source)
+
+            if (serieTvCorrispondenti.length > 0) {
+              for (var i = 0; i < serieTvCorrispondenti.length; i++) {
+              var serieTv = serieTvCorrispondenti[i];
+              var context = {
+                "name": serieTv.name,
+                "original_name": serieTv.original_name,
+                "original_language": serieTv.original_language,
+                "vote_average": serieTv.vote_average
+              }
+              var html = template(context);
+              $('.container-film').append(html);
+            }
+          } else if (serieTvCorrispondenti = []) {
+            var messaggioErrore = 'Nessuna serie tv corrispondente';
+                var source = $('#error-template').html()
+                var template = Handlebars.compile(source)
+                var context = {
+                  "messaggio": messaggioErrore
+                  }
+                var html = template(context);
+                $('.container-film').append(html);
+          }
+        },
+        error: function() {
+          var messaggioErrore = 'Inserisci il titolo di un film o di una serie tv';
+          var source = $('#error-template').html()
+          var template = Handlebars.compile(source)
+          var context = {
+            "messaggio": messaggioErrore
+            }
+          var html = template(context);
+          $('.container-film').append(html);
+        }
+      }
+    )};
 
     // Creo una funzione per la chiamata Ajax dei film
     function searchFilm() {
@@ -52,7 +107,7 @@ $(document).ready(function() {
               $('.container-film').append(html);
             }
           } else if (filmCorrispondenti = []) {
-            var messaggioErrore = 'La ricerca non ha prodotto risultati';
+            var messaggioErrore = 'Nessun film corrispondente';
                 var source = $('#error-template').html()
                 var template = Handlebars.compile(source)
                 var context = {
@@ -63,7 +118,7 @@ $(document).ready(function() {
           }
         },
         error: function() {
-          var messaggioErrore = 'Inserisci il titolo di un film o una parola chiave';
+          var messaggioErrore = 'Inserisci il titolo di un film o di una serie tv';
           var source = $('#error-template').html()
           var template = Handlebars.compile(source)
           var context = {
@@ -74,4 +129,9 @@ $(document).ready(function() {
         }
       }
     )};
+
+    // function stelle(voto) {
+    //   var votazione = Math.ceil(voto/2)
+    //   for
+    // }
 });

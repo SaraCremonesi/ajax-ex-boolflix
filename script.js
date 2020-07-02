@@ -39,22 +39,31 @@ $(document).ready(function() {
           var source = $('#entry-template-film').html()
           var template = Handlebars.compile(source)
 
-          for (var i = 0; i < filmCorrispondenti.length; i++) {
-            var film = filmCorrispondenti[i];
-
-            var context = {
-              "title": film.title,
-              "original_title": film.original_title,
-              "original_language": film.original_language,
-              "vote_average": film.vote_average
+            if (filmCorrispondenti.length > 0) {
+              for (var i = 0; i < filmCorrispondenti.length; i++) {
+              var film = filmCorrispondenti[i];
+              var context = {
+                "title": film.title,
+                "original_title": film.original_title,
+                "original_language": film.original_language,
+                "vote_average": film.vote_average
+              }
+              var html = template(context);
+              $('.container-film').append(html);
             }
-
-            var html = template(context);
-            $('.container-film').append(html);
+          } else if (filmCorrispondenti = []) {
+            var messaggioErrore = 'La ricerca non ha prodotto risultati';
+                var source = $('#error-template').html()
+                var template = Handlebars.compile(source)
+                var context = {
+                  "messaggio": messaggioErrore
+                  }
+                var html = template(context);
+                $('.container-film').append(html);
           }
         },
         error: function() {
-          var messaggioErrore = 'La ricerca non ha prodotto risultati';
+          var messaggioErrore = 'Inserisci il titolo di un film o una parola chiave';
           var source = $('#error-template').html()
           var template = Handlebars.compile(source)
           var context = {

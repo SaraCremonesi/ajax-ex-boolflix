@@ -48,19 +48,21 @@ $(document).ready(function() {
               "original_language": film.original_language,
               "vote_average": film.vote_average
             }
-            
+
             var html = template(context);
             $('.container-film').append(html);
           }
         },
         error: function() {
-          alert('Inserisci il nome di un film per la ricerca');
+          var messaggioErrore = 'La ricerca non ha prodotto risultati';
+          var source = $('#error-template').html()
+          var template = Handlebars.compile(source)
+          var context = {
+            "messaggio": messaggioErrore
+            }
+          var html = template(context);
+          $('#error').append(html);
         }
       }
     )};
-
-    // Creo una funzione per stampare i film a schermo con Handlebars
-    function printFilm(filmDaTrovare) {
-
-    }
 });

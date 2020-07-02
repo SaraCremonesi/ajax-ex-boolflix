@@ -129,9 +129,5 @@ $(document).ready(function() {
         }
       }
     )};
-
-    // function stelle(voto) {
-    //   var votazione = Math.ceil(voto/2)
-    //   for
-    // }
+    }
 });

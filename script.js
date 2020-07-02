@@ -61,7 +61,7 @@ $(document).ready(function() {
             "messaggio": messaggioErrore
             }
           var html = template(context);
-          $('#error').append(html);
+          $('.container-film').append(html);
         }
       }
     )};

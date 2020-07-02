@@ -1,3 +1,7 @@
-.hidden {
-  display: none;
+.language > img {
+  width: 20px;
+}
+
+i {
+  color: black;
 }

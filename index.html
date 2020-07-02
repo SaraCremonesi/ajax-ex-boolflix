@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +12,8 @@
   </head>
   <body>
 
-    <div class="container">
+<!-- // **********************PRIMA VERSIONE*********************** -->
+    <!-- <div class="container">
       <input type="text" placeholder="Cerca film" class="search-bar">
       <button class="search">Cerca</button>
 
@@ -24,24 +26,55 @@
       <span id="error">{{messaggio}}</span>
     </script>
 
-    <script id="entry-template-serietv" type="text/x-handlebars-template">
-      <ul id="info-serie">
-        <li>Titolo serie: {{name}}</li>
-        <li>Titolo originale: {{original_name}}</li>
-        <li>Lingua: {{original_language}}</li>
-        <li>Voto: {{vote_average}}</li>
-      </ul>
-    </script>
 
-    <script id="entry-template-film" type="text/x-handlebars-template">
-      <ul id="info-film">
-        <li>Titolo film: {{title}}</li>
+    <script id="template-items" type="text/x-handlebars-template">
+      <ul id="info-items">
+        <li>Titolo: {{title}}</li>
         <li>Titolo originale: {{original_title}}</li>
-        <li>Lingua: {{original_language}}</li>
-        <li>Voto: {{vote_average}}</li>
+        <li>Lingua: <span class="language">{{{original_language}}}</span></li>
+        <li>Voto: {{{vote_average}}}</li>
       </ul>
     </script>
 
     <script type="text/javascript" src="script.js"></script>
   </body>
-</html>
+</html> -->
+
+
+
+
+<!-- **********************SECONDA VERSIONE*********************** -->
+<!-- <div class="container">
+  <input type="text" placeholder="Cerca film" class="search-bar">
+  <button class="search">Cerca</button>
+
+  <div class="container-film">
+
+  </div>
+</div>
+
+<script id="entry-template-serietv" type="text/x-handlebars-template">
+  <ul id="info-serie">
+    <li>Titolo serie: {{name}}</li>
+    <li>Titolo originale: {{original_name}}</li>
+    <li>Lingua: {{original_language}}</li>
+    <li>Voto: {{vote_average}}</li>
+  </ul>
+</script>
+
+<script id="entry-template-film" type="text/x-handlebars-template">
+  <ul id="info-film">
+    <li>Titolo film: {{title}}</li>
+    <li>Titolo originale: {{original_title}}</li>
+    <li>Lingua: <span class="language">{{{original_language}}}<span></li>
+    <li>Voto: {{{vote_average}}}</li>
+  </ul>
+</script>
+
+<script id="error-template" type="text/x-handlebars-template">
+  <span id="error">{{messaggio}}</span>
+</script>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html> -->

@@ -12,8 +12,8 @@
   </head>
   <body>
 
-<!-- // **********************PRIMA VERSIONE*********************** -->
-    <!-- <div class="container">
+<!-- **********************PRIMA VERSIONE*********************** -->
+    <div class="container">
       <input type="text" placeholder="Cerca film" class="search-bar">
       <button class="search">Cerca</button>
 
@@ -29,6 +29,7 @@
 
     <script id="template-items" type="text/x-handlebars-template">
       <ul id="info-items">
+        <li><img src="{{{poster_path}}}"></li>
         <li>Titolo: {{title}}</li>
         <li>Titolo originale: {{original_title}}</li>
         <li>Lingua: <span class="language">{{{original_language}}}</span></li>
@@ -38,13 +39,13 @@
 
     <script type="text/javascript" src="script.js"></script>
   </body>
-</html> -->
+</html>
 
 
 
 
 <!-- **********************SECONDA VERSIONE*********************** -->
-<div class="container">
+<!-- <div class="container">
   <input type="text" placeholder="Cerca film" class="search-bar">
   <button class="search">Cerca</button>
 
@@ -55,7 +56,7 @@
 
 <script id="entry-template-serietv" type="text/x-handlebars-template">
   <ul id="info-serie">
-    <li><img src="{{{poster_path}}}" alt=""><li>
+    <li><img src="{{{poster_path}}}" alt=""></li>
     <li>Titolo serie: {{name}}</li>
     <li>Titolo originale: {{original_name}}</li>
     <li>Lingua: {{original_language}}</li>
@@ -65,7 +66,7 @@
 
 <script id="entry-template-film" type="text/x-handlebars-template">
   <ul id="info-film">
-    <li>{{poster_path}}<li>
+    <li><img src="{{{poster_path}}}" alt=""></li>
     <li>Titolo film: {{title}}</li>
     <li>Titolo originale: {{original_title}}</li>
     <li>Lingua: <span class="language">{{{original_language}}}<span></li>
@@ -79,4 +80,4 @@
 
 <script type="text/javascript" src="script.js"></script>
 </body>
-</html>
+</html> -->

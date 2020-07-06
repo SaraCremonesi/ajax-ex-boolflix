@@ -52,6 +52,7 @@ header {
   height: 100%;
 }
 
+/* ricerca */
 .ricerca {
   flex-basis: 50%;
   display: flex;
@@ -62,3 +63,5 @@ header {
 input {
   margin-right: 2%;
 }
+
+/* MAIN */

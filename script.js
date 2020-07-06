@@ -5,16 +5,20 @@ $(document).ready(function() {
   // Gestione ricerca film al click del button
   $(document).on('click', 'button.search',
     function() {
-      search();
-      clean();
+      if ($('input.search-bar').val() !== '') {
+        search();
+        clean();
+      }
     });
 
     // Gestione ricerca film alla pressione del tasto enter
     $(document).on('keypress', 'input.search-bar',
     function() {
       if (event.which == 13 || event.keyCode == 13) {
-        search();
-        clean();
+        if ($('input.search-bar').val() !== '') {
+          search();
+          clean();
+        }
       };
     });
 
@@ -36,6 +40,8 @@ $(document).ready(function() {
   function clean() {
     $('.container-film').html('');
     $('input.search-bar').val('');
+    $('#results-film').html('');
+    $('#results-serie-tv').html('');
   }
     // Funzione per la chiamata Ajax
     function getItems(url, key, query, type) {
@@ -63,14 +69,7 @@ $(document).ready(function() {
           }
         },
         error: function() {
-          var messaggioErrore = 'Inserisci il titolo di un film o di una serie tv';
-          var source = $('#error-template').html()
-          var template = Handlebars.compile(source)
-          var context = {
-            "messaggio": messaggioErrore
-          }
-          var html = template(context);
-          $('.container-film').append(html);
+          alert('Errore')
         }
       });
 }
@@ -81,7 +80,11 @@ $(document).ready(function() {
       var template = Handlebars.compile(source)
 
       var results = items.length;
-      $('#results').append(results);
+      if (type === 'Film') {
+        $('#results-film').append('Film trovati: ' + results);
+      } else {
+        $('#results-serie-tv').append('Serie tv trovate: ' + results);
+      }
 
       for (var i = 0; i < items.length; i++) {
         var singleItem = items[i];

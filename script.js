@@ -22,6 +22,15 @@ $(document).ready(function() {
       };
     });
 
+    $(document).on('mouseenter', '.poster-image img',
+    function() {
+      $('.container-info').removeClass('hidden');
+    });
+
+    $(document).on('mouseleave', '.poster-image img',
+    function() {
+      $('.container-info').addClass('hidden');
+    });
 
 
 // *************FUNZIONI****************
@@ -75,7 +84,7 @@ $(document).ready(function() {
 }
 
     // Funzione per stampare
-    function  printItems(items, type) {
+    function printItems(items, type) {
       var source = $('#template-items').html()
       var template = Handlebars.compile(source)
 
@@ -118,7 +127,8 @@ $(document).ready(function() {
           "original_title": originalTitle,
           "original_language": getLanguage(singleItem.original_language),
           "vote_average": getStars(singleItem.vote_average),
-          "id": id
+          "id": id,
+          "overview": singleItem.overview
         }
         var html = template(context);
         $('.container-film').append(html);

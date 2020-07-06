@@ -25,13 +25,14 @@
           </div>
         </div>
       </header>
+      <main>
+        <span id="results-film"></span>
+        <span id="results-serie-tv"></span>
 
-      <span id="results-film"></span>
-      <span id="results-serie-tv"></span>
+        <div class="container-film">
 
-      <div class="container-film">
-
-      </div>
+        </div>
+      </main>
     </div>
 
     <script id="error-template" type="text/x-handlebars-template">
@@ -39,17 +40,20 @@
     </script>
 
     <script id="template-items" type="text/x-handlebars-template">
-      <ul id="info-items">
-        <li>
-          <a href="{{{id}}}">
-            <img src="{{{poster_path}}}">
-          </a>
-        </li>
-        <li>Titolo: {{title}}</li>
-        <li>Titolo originale: {{original_title}}</li>
-        <li>Lingua: <span class="language">{{{original_language}}}</span></li>
-        <li>Voto: {{{vote_average}}}</li>
-      </ul>
+      <div class="poster-image">
+        <a href="{{{id}}}">
+          <img src="{{{poster_path}}}" class="">
+        </a>
+      </div>
+      <div class="container-info hidden">
+        <ul>
+          <li><u>Titolo</u>: {{title}}</li>
+          <li><u>Titolo originale</u>: {{original_title}}</li>
+          <li><u>Lingua</u>: <span class="language">{{{original_language}}}</span></li>
+          <li><u>Voto</u>: {{{vote_average}}}</li>
+          <li>{{overview}}</li>
+        </ul>
+      </div>
     </script>
 
     <script type="text/javascript" src="script.js"></script>

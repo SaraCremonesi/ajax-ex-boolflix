@@ -72,13 +72,16 @@ button {
   color: white;
   padding: 3%;
   overflow: auto;
-  z-index: 5;
 }
 
-li {
+ul li {
   list-style-type: none;
   line-height: 120%;
   margin-bottom: 1%;
+}
+
+main span {
+  display: block;
 }
 
 .poster-image {

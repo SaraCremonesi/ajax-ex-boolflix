@@ -22,12 +22,12 @@ $(document).ready(function() {
       };
     });
 
-    $(document).on('mouseenter', '.poster-image img',
+    $(document).on('mouseenter', '.poster-image',
     function() {
       $('.container-info').removeClass('hidden');
     });
 
-    $(document).on('mouseleave', '.poster-image img',
+    $(document).on('mouseleave', '.poster-image',
     function() {
       $('.container-info').addClass('hidden');
     });

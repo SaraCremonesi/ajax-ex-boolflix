@@ -26,8 +26,13 @@
         </div>
       </header>
       <main>
-        <span id="results-film"></span>
-        <span id="results-serie-tv"></span>
+        <div class="risultati">
+          <span id="results-film"></span>
+          <span id="results-serie-tv"></span>
+          <script id="error-template" type="text/x-handlebars-template">
+            <span id="error">{{messaggio}}</span>
+          </script>
+        </div>
 
         <div class="container-film">
 
@@ -35,26 +40,25 @@
       </main>
     </div>
 
-    <script id="error-template" type="text/x-handlebars-template">
-      <span id="error">{{messaggio}}</span>
-    </script>
-
     <script id="template-items" type="text/x-handlebars-template">
       <div class="poster-image">
-        <a href="{{{id}}}">
-          <img src="{{{poster_path}}}" class="">
-        </a>
-        <div class="container-info">
-          <ul>
-            <li><u>Titolo</u>: {{title}}</li>
-            <li><u>Titolo originale</u>: {{original_title}}</li>
-            <li><u>Lingua</u>: <span class="language">{{{original_language}}}</span></li>
-            <li><u>Voto</u>: {{{vote_average}}}</li>
-            <li>{{overview}}</li>
-          </ul>
+        <img src="{{{poster_path}}}" class="">
+        <div class="container-info hidden">
+          <a href="{{{id}}}">
+            <ul>
+              <li><u>Titolo</u>: {{title}}</li>
+              <li><u>Titolo originale</u>: {{original_title}}</li>
+              <li><u>Lingua</u>: <span class="language">{{{original_language}}}</span></li>
+              <li><u>Voto</u>: {{{vote_average}}}</li>
+              <li>{{overview}}</li>
+            </ul>
+          </a>
         </div>
       </div>
     </script>
+
+
+
 
     <script type="text/javascript" src="script.js"></script>
   </body>

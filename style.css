@@ -14,6 +14,11 @@ i {
   color: yellow;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* HEADER */
 header {
   width: 100%;
@@ -61,17 +66,21 @@ button {
 
 /* MAIN */
 .container-film {
-  width: 200px;
-  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .container-info {
-  background-color: black;
-  width: 200px;
-  height: 300px;
+  background-color: rgba(0, 0, 0, .75);
+  width: 195px;
+  height: 294.5px;
   color: white;
   padding: 3%;
   overflow: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 ul li {
@@ -80,18 +89,28 @@ ul li {
   margin-bottom: 1%;
 }
 
-main span {
+.risultati span {
   display: block;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.risultati {
+  margin-left: 6%;
+  margin-top: .5%;
 }
 
 .poster-image {
   width: 200px;
   height: 300px;
+  position: relative;
+  margin: 5%;
+  border: 3px solid black;
 }
 
 .container-film img {
   width: 100%;
-  height: 300px;
+  height: 294.5px;
 }
 
 .language img {
@@ -100,7 +119,12 @@ main span {
 }
 
 .container {
-  background-color: grey;
+  background-color: darkgrey;
   height: 100vh;
   overflow: auto;
+}
+
+#error {
+  height: fit-content;
+  font-weight: normal;
 }

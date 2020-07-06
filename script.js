@@ -24,12 +24,12 @@ $(document).ready(function() {
 
     $(document).on('mouseenter', '.poster-image',
     function() {
-      $('.container-info').removeClass('hidden');
+      $(this).find('.container-info').removeClass('hidden');
     });
 
     $(document).on('mouseleave', '.poster-image',
     function() {
-      $('.container-info').addClass('hidden');
+      $(this).find('.container-info').addClass('hidden');
     });
 
 
@@ -74,7 +74,7 @@ $(document).ready(function() {
               "messaggio": messaggioErrore
             }
             var html = template(context);
-            $('.container-film').append(html);
+            $('.risultati').append(html);
           }
         },
         error: function() {

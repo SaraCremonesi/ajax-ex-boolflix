@@ -36,9 +36,6 @@
 
         <div class="selector">
           <select>
-            <script id="template-pages" type="text/x-handlebars-template">
-              <option value="{{total_pages}}"></option>
-            </script>
           </select>
         </div>
 
@@ -63,6 +60,10 @@
           </a>
         </div>
       </div>
+    </script>
+
+    <script id="template-pages" type="text/x-handlebars-template">
+      <option value="{{value}}">{{total_pages}}</option>
     </script>
 
     <script type="text/javascript" src="script.js"></script>

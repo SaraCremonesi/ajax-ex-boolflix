@@ -60,8 +60,7 @@ $(document).ready(function() {
           method: 'GET',
           data: {
             api_key: key,
-            query: query,
-            append_to_response:
+            query: query
           },
           success: function(dataResults) {
           var itemsFromApi = dataResults.results;
@@ -83,7 +82,7 @@ $(document).ready(function() {
           alert('Errore')
         }
       });
-}
+    }
 
     // Funzione per stampare
     function printItems(items, type) {
@@ -162,33 +161,7 @@ $(document).ready(function() {
       return stars;
     }
 
-
-    function getTotalPages() {
-      $.ajax(
-        {
-          url: url,
-          method: 'GET',
-          data: {
-            api_key: key,
-            query: query
-          },
-          success: function(dataResults) {
-            var source = $('#template-pages').html();
-            var template = Handlebars.compile(source);
-            var context = {
-              "page": singleItem.page,
-              "total_pages": singleItem.total_pages
-            }
-            var html = template(context);
-            $('.selector').append(html);
-          },
-        error: function() {
-          alert('Errore');
-        }
-    });
-}});
-
-
+});
 
 // **********************SECONDA VERSIONE***********************
 // $(document).ready(function() {

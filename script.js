@@ -60,10 +60,12 @@ $(document).ready(function() {
           method: 'GET',
           data: {
             api_key: key,
-            query: query
+            query: query,
+            append_to_response:
           },
           success: function(dataResults) {
           var itemsFromApi = dataResults.results;
+
           if (itemsFromApi.length > 0) {
             printItems(itemsFromApi, type);
           } else {
@@ -71,7 +73,7 @@ $(document).ready(function() {
             var source = $('#error-template').html();
             var template = Handlebars.compile(source);
             var context = {
-              "messaggio": messaggioErrore
+              "messaggio": messaggioErrore,
             }
             var html = template(context);
             $('.risultati').append(html);
@@ -99,6 +101,7 @@ $(document).ready(function() {
         var singleItem = items[i];
         var title;
         var originalTitle;
+
         if (type === 'Film') {
           title = singleItem.title;
           originalTitle = singleItem.original_title;
@@ -158,8 +161,32 @@ $(document).ready(function() {
       }
       return stars;
     }
-});
 
+
+    function getTotalPages() {
+      $.ajax(
+        {
+          url: url,
+          method: 'GET',
+          data: {
+            api_key: key,
+            query: query
+          },
+          success: function(dataResults) {
+            var source = $('#template-pages').html();
+            var template = Handlebars.compile(source);
+            var context = {
+              "page": singleItem.page,
+              "total_pages": singleItem.total_pages
+            }
+            var html = template(context);
+            $('.selector').append(html);
+          },
+        error: function() {
+          alert('Errore');
+        }
+    });
+}});
 
 
 
